@@ -1,0 +1,1434 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Briefing — Identidad de Marca</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --g-dark:   #0F1E18;
+  --g-mid:    #1E3D2F;
+  --g-brand:  #2D5A4A;
+  --g-acc:    #3E7A5E;
+  --g-light:  #D4EBE1;
+  --g-xlight: #EDF7F2;
+  --cream:    #F5F0E8;
+  --cream2:   #EDE8DF;
+  --ink:      #1A2420;
+  --ink2:     #3A4A44;
+  --ink3:     #6B7B74;
+  --line:     #D0D9D4;
+  --white:    #FAFAF8;
+  --red:      #B84040;
+  --serif: 'DM Serif Display', Georgia, serif;
+  --sans:  'DM Sans', system-ui, sans-serif;
+  --rad: 10px;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--sans);
+  background: var(--cream);
+  color: var(--ink);
+  min-height: 100vh;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+/* HEADER */
+.site-header {
+  background: var(--g-dark);
+  padding: 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  border-bottom: 1px solid rgba(255,255,255,.06);
+}
+.header-inner {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 0 24px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.header-logo {
+  font-family: var(--serif);
+  font-size: 17px;
+  color: var(--g-light);
+  letter-spacing: .01em;
+}
+.header-progress {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.prog-label {
+  font-size: 12px;
+  color: rgba(255,255,255,.4);
+  font-weight: 300;
+}
+.prog-bar-wrap {
+  width: 120px;
+  height: 3px;
+  background: rgba(255,255,255,.1);
+  border-radius: 2px;
+  overflow: hidden;
+}
+.prog-bar-fill {
+  height: 100%;
+  background: var(--g-light);
+  border-radius: 2px;
+  width: 0%;
+  transition: width .4s ease;
+}
+.prog-pct {
+  font-size: 12px;
+  color: var(--g-light);
+  font-weight: 500;
+  min-width: 28px;
+  text-align: right;
+}
+
+/* HERO — solo dice BRIEFING */
+.hero {
+  background: var(--g-dark);
+  padding: 64px 24px 56px;
+  text-align: center;
+}
+.hero h1 {
+  font-family: var(--serif);
+  font-size: clamp(48px, 9vw, 80px);
+  color: var(--white);
+  line-height: 1.0;
+  letter-spacing: .02em;
+  margin-bottom: 20px;
+}
+.hero-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+.pill {
+  font-size: 12px;
+  padding: 4px 14px;
+  border: 1px solid rgba(255,255,255,.14);
+  border-radius: 20px;
+  color: rgba(255,255,255,.45);
+  letter-spacing: .03em;
+}
+.hero-sub {
+  font-size: 14px;
+  color: rgba(255,255,255,.35);
+  font-weight: 300;
+  margin-top: 14px;
+}
+
+/* WRAPPER */
+.main {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 0 24px 120px;
+}
+
+/* NAV */
+.chapters-nav {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  padding: 20px 0 8px;
+  position: sticky;
+  top: 56px;
+  background: var(--cream);
+  z-index: 90;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 48px;
+}
+.ch-btn {
+  font-size: 11px;
+  font-weight: 500;
+  padding: 5px 12px;
+  border-radius: 20px;
+  border: 1px solid var(--line);
+  background: var(--white);
+  color: var(--ink3);
+  cursor: pointer;
+  transition: all .15s;
+  white-space: nowrap;
+}
+.ch-btn:hover { background: var(--g-xlight); color: var(--g-brand); border-color: var(--g-light); }
+.ch-btn.done { background: var(--g-xlight); border-color: var(--g-light); color: var(--g-brand); }
+.ch-btn.done::before { content: '✓ '; }
+
+/* SECTION */
+.ch-section {
+  margin-bottom: 56px;
+  scroll-margin-top: 124px;
+}
+.ch-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 20px 24px;
+  background: var(--g-dark);
+  border-radius: var(--rad);
+  margin-bottom: 32px;
+}
+.ch-num {
+  font-family: var(--serif);
+  font-size: 32px;
+  color: var(--g-acc);
+  line-height: 1;
+  flex-shrink: 0;
+  padding-top: 2px;
+}
+.ch-header h2 {
+  font-family: var(--serif);
+  font-size: 22px;
+  color: var(--white);
+  line-height: 1.2;
+  margin-bottom: 4px;
+}
+.ch-header p {
+  font-size: 13px;
+  color: rgba(255,255,255,.45);
+  font-weight: 300;
+}
+
+/* QUESTION */
+.q-block {
+  margin-bottom: 28px;
+  background: var(--white);
+  border-radius: var(--rad);
+  padding: 22px 24px;
+  border: 1px solid var(--line);
+  transition: border-color .2s, box-shadow .2s;
+}
+.q-block:focus-within {
+  border-color: var(--g-brand);
+  box-shadow: 0 0 0 3px rgba(45,90,74,.08);
+}
+.q-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+  flex-wrap: wrap;
+}
+.q-n {
+  font-size: 11px;
+  font-weight: 500;
+  background: var(--g-xlight);
+  color: var(--g-brand);
+  padding: 2px 8px;
+  border-radius: 4px;
+  letter-spacing: .04em;
+}
+.q-tag {
+  font-size: 11px;
+  color: var(--ink3);
+  border: 1px solid var(--line);
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+.q-req {
+  font-size: 11px;
+  color: var(--red);
+  margin-left: auto;
+}
+.q-label {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--ink);
+  line-height: 1.5;
+  margin-bottom: 4px;
+}
+.q-hint {
+  font-size: 13px;
+  color: var(--ink3);
+  line-height: 1.55;
+  margin-bottom: 14px;
+  padding-left: 12px;
+  border-left: 2px solid var(--g-light);
+  font-style: italic;
+}
+.q-hint:empty { display: none; }
+
+textarea, input[type="text"], input[type="email"] {
+  width: 100%;
+  font-family: var(--sans);
+  font-size: 14px;
+  color: var(--ink);
+  background: var(--cream);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 12px 14px;
+  resize: vertical;
+  transition: border-color .15s, background .15s;
+  line-height: 1.55;
+}
+textarea { min-height: 88px; }
+textarea:focus, input:focus {
+  outline: none;
+  border-color: var(--g-brand);
+  background: var(--white);
+}
+::placeholder { color: var(--ink3); opacity: .6; }
+
+/* CHIPS */
+.chip-grid { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px; }
+.chip-opt { display: none; }
+.chip-opt + label {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 14px;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  font-size: 13px;
+  color: var(--ink2);
+  cursor: pointer;
+  transition: all .15s;
+  user-select: none;
+  background: var(--white);
+}
+.chip-opt + label:hover { border-color: var(--g-brand); background: var(--g-xlight); color: var(--g-brand); }
+.chip-opt:checked + label { border-color: var(--g-brand); background: var(--g-light); color: var(--g-dark); font-weight: 500; }
+.chip-opt + label::before {
+  content: '';
+  width: 14px; height: 14px;
+  border: 1.5px solid currentColor;
+  border-radius: 3px;
+  flex-shrink: 0;
+  transition: all .15s;
+}
+input[type="radio"].chip-opt + label::before { border-radius: 50%; }
+.chip-opt:checked + label::before {
+  background: var(--g-brand); border-color: var(--g-brand);
+  content: '✓'; color: white; font-size: 9px;
+  display: flex; align-items: center; justify-content: center;
+}
+input[type="radio"].chip-opt:checked + label::before {
+  background: var(--g-brand); border-color: var(--g-brand);
+  content: '●'; font-size: 7px;
+}
+
+/* SCALE */
+.scale-row {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--line);
+}
+.scale-row:last-child { border-bottom: none; }
+.scale-left { font-size: 13px; color: var(--ink2); text-align: right; line-height: 1.3; }
+.scale-right { font-size: 13px; color: var(--ink2); text-align: left; line-height: 1.3; }
+.scale-mid { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+input[type="range"] { width: 200px; accent-color: var(--g-brand); cursor: pointer; }
+.scale-val { font-size: 11px; color: var(--ink3); min-height: 16px; }
+
+/* SWATCHES */
+.swatch-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+  gap: 8px;
+  margin-top: 8px;
+}
+.swatch-opt { display: none; }
+.swatch-opt + label {
+  display: flex; flex-direction: column; cursor: pointer;
+  border-radius: 8px; overflow: hidden;
+  border: 2px solid transparent; transition: all .15s;
+}
+.swatch-opt + label:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,.12); }
+.swatch-opt:checked + label { border-color: var(--g-brand); box-shadow: 0 0 0 3px var(--g-light); }
+.swatch-color { height: 52px; width: 100%; }
+.swatch-name { font-size: 11px; color: var(--ink2); padding: 5px 6px 4px; background: var(--white); text-align: center; border-top: 1px solid var(--line); line-height: 1.3; }
+.swatch-hex { font-size: 10px; color: var(--ink3); font-family: monospace; }
+
+/* SELECT */
+select {
+  width: 100%;
+  font-family: var(--sans);
+  font-size: 14px;
+  color: var(--ink);
+  background: var(--cream);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 11px 14px;
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236B7B74' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  transition: border-color .15s;
+}
+select:focus { outline: none; border-color: var(--g-brand); background-color: var(--white); }
+
+.ch-divider { height: 1px; background: var(--line); margin: 48px 0; }
+
+.note-box {
+  background: #FFF7ED;
+  border-left: 3px solid #E07B39;
+  border-radius: 0 8px 8px 0;
+  padding: 12px 16px;
+  font-size: 13px;
+  color: #7A4020;
+  line-height: 1.6;
+  margin-bottom: 24px;
+  font-style: italic;
+}
+
+/* SUBMIT */
+.submit-section {
+  background: var(--g-dark);
+  border-radius: var(--rad);
+  padding: 40px;
+  text-align: center;
+  margin-top: 56px;
+}
+.submit-section h3 {
+  font-family: var(--serif);
+  font-size: 28px;
+  color: var(--white);
+  margin-bottom: 8px;
+}
+.submit-section p {
+  font-size: 14px;
+  color: rgba(255,255,255,.5);
+  margin-bottom: 28px;
+  font-weight: 300;
+}
+.email-row {
+  display: flex;
+  gap: 10px;
+  max-width: 480px;
+  margin: 0 auto 16px;
+}
+.email-row input {
+  flex: 1;
+  background: rgba(255,255,255,.08);
+  border-color: rgba(255,255,255,.15);
+  color: var(--white);
+}
+.email-row input::placeholder { color: rgba(255,255,255,.3); }
+.email-row input:focus { background: rgba(255,255,255,.12); border-color: var(--g-light); }
+.btn-submit {
+  padding: 13px 32px;
+  background: var(--g-light);
+  color: var(--g-dark);
+  font-family: var(--sans);
+  font-size: 14px;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all .2s;
+  white-space: nowrap;
+  letter-spacing: .02em;
+}
+.btn-submit:hover { background: var(--white); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(0,0,0,.2); }
+.submit-note { font-size: 12px; color: rgba(255,255,255,.25); margin-top: 12px; }
+
+/* SUCCESS */
+.success-screen { display: none; text-align: center; padding: 80px 24px; }
+.success-screen.show { display: block; }
+.success-icon {
+  width: 64px; height: 64px;
+  background: var(--g-xlight);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 24px;
+  font-size: 28px;
+}
+.success-screen h2 { font-family: var(--serif); font-size: 32px; color: var(--g-dark); margin-bottom: 12px; }
+.success-screen p { font-size: 15px; color: var(--ink3); max-width: 400px; margin: 0 auto; }
+
+@media (max-width: 600px) {
+  .scale-row { grid-template-columns: 1fr; gap: 6px; }
+  .scale-left, .scale-right { text-align: left; }
+  input[type="range"] { width: 100%; }
+  .email-row { flex-direction: column; }
+  .ch-header { flex-direction: column; gap: 8px; }
+  .ch-num { font-size: 24px; }
+}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <span class="header-logo">Briefing</span>
+    <div class="header-progress">
+      <span class="prog-label">Completado</span>
+      <div class="prog-bar-wrap"><div class="prog-bar-fill" id="progFill"></div></div>
+      <span class="prog-pct" id="progPct">0%</span>
+    </div>
+  </div>
+</header>
+
+<div class="hero">
+  <h1>Briefing</h1>
+  <div class="hero-pills">
+    <span class="pill">Propósito</span>
+    <span class="pill">Valores</span>
+    <span class="pill">Narrativa</span>
+    <span class="pill">Color</span>
+    <span class="pill">Packaging</span>
+    <span class="pill">Naming</span>
+    <span class="pill">Logotipo</span>
+  </div>
+  <p class="hero-sub">57 preguntas para construir una identidad de marca completa, coherente y auténtica.</p>
+</div>
+
+<div class="main">
+
+  <nav class="chapters-nav" id="chapNav">
+    <button class="ch-btn" onclick="goTo('s1')">01 · Propósito</button>
+    <button class="ch-btn" onclick="goTo('s2')">02 · Valores</button>
+    <button class="ch-btn" onclick="goTo('s3')">03 · Narrativa</button>
+    <button class="ch-btn" onclick="goTo('s4')">04 · Audiencia</button>
+    <button class="ch-btn" onclick="goTo('s5')">05 · Color</button>
+    <button class="ch-btn" onclick="goTo('s6')">06 · Packaging</button>
+    <button class="ch-btn" onclick="goTo('s7')">07 · Naming</button>
+    <button class="ch-btn" onclick="goTo('s8')">08 · Logotipo</button>
+    <button class="ch-btn" onclick="goTo('s9')">09 · Símbolo</button>
+  </nav>
+
+  <form id="mainForm" novalidate>
+
+  <!-- ══ CAP 01 ══ -->
+  <div class="ch-section" id="s1">
+    <div class="ch-header">
+      <div class="ch-num">01</div>
+      <div><h2>Propósito, visión y misión</h2><p>Por qué existe la marca, hacia dónde va y qué hace cada día para llegar ahí.</p></div>
+    </div>
+
+    <div class="q-block">
+      <div class="q-meta"><span class="q-n">01</span><span class="q-tag">Propósito</span><span class="q-req">* requerido</span></div>
+      <div class="q-label">¿A qué apunta la marca?</div>
+      <div class="q-hint">"La marca existe para que el mundo ___" — Completa la frase.</div>
+      <textarea name="proposito" placeholder="La marca existe para que el mundo…" required></textarea>
+    </div>
+
+    <div class="q-block">
+      <div class="q-meta"><span class="q-n">02</span><span class="q-tag">Origen</span><span class="q-req">* requerido</span></div>
+      <div class="q-label">¿Qué los motivó a empezar este proyecto? ¿Cuándo comenzó?</div>
+      <div class="q-hint">¿Qué problema vieron en el mercado que nadie estaba resolviendo bien?</div>
+      <textarea name="origen" placeholder="Todo empezó cuando notamos que…" required></textarea>
+    </div>
+
+    <div class="q-block">
+      <div class="q-meta"><span class="q-n">03</span><span class="q-tag">Visión</span></div>
+      <div class="q-label">¿Cuál es el futuro que la marca quiere ayudar a construir?</div>
+      <div class="q-hint">¿Cómo sería el mundo si la marca logra todo lo que se propone?</div>
+      <textarea name="vision" placeholder='"En el mundo que imaginamos, las personas…"'></textarea>
+    </div>
+
+    <div class="q-block">
+      <div class="q-meta"><span class="q-n">04</span><span class="q-tag">Misión</span></div>
+      <div class="q-label">¿Cuál es la misión concreta hoy?</div>
+      <div class="q-hint">La misión es el "cómo" de la visión. Debe ser accionable y medible.</div>
+      <textarea name="mision" placeholder='"Cada día, la marca…"'></textarea>
+    </div>
+
+    <div class="q-block">
+      <div class="q-meta"><span class="q-n">05</span><span class="q-tag">Industria</span><span class="q-req">* requerido</span></div>
+      <div class="q-label">¿En qué industria clasificarían la marca y qué problemas concretos resuelve?</div>
+      <textarea name="industria" placeholder="Industria: …&#10;Qué hace: …&#10;Problema que resuelve mejor que nadie: …" required></textarea>
+    </div>
+
+    <div class="q-block">
+      <div class="q-meta"><span class="q-n">06</span><span class="q-tag">Diferencial</span></div>
+      <div class="q-label">¿Hay alguna necesidad que están cubriendo de manera diferente o innovadora?</div>
+      <textarea name="diferencial" placeholder="Lo que hacemos diferente es…"></textarea>
+    </div>
+
+    <div class="q-block">
+      <div class="q-meta"><span class="q-n">07</span><span class="q-tag">Visión temporal</span></div>
+      <div class="q-label">¿Cómo imaginan su proyecto en 1, 3 y 5 años?</div>
+      <div class="chip-grid">
+        <input type="radio" class="chip-opt" name="expansion" id="ex1" value="Solo local / ciudad"><label for="ex1">Solo local / ciudad</label>
+        <input type="radio" class="chip-opt" name="expansion" id="ex2" value="Regional / varios departamentos"><label for="ex2">Regional</label>
+        <input type="radio" class="chip-opt" name="expansion" id="ex3" value="Nacional"><label for="ex3">Nacional</label>
+        <input type="radio" class="chip-opt" name="expansion" id="ex4" value="Internacional / global"><label for="ex4">Internacional / global</label>
+      </div>
+      <textarea name="vision_temporal" style="margin-top:12px" placeholder="En 1 año: …&#10;En 3 años: …&#10;En 5 años: …"></textarea>
+    </div>
+  </div>
+
+  <div class="ch-divider"></div>
+
+  <!-- ══ CAP 02 ══ -->
+  <div class="ch-section" id="s2">
+    <div class="ch-header">
+      <div class="ch-num">02</div>
+      <div><h2>Valores y principios éticos</h2><p>Lo que la marca defiende, lo que nunca negocia y cómo se relaciona con el mundo.</p></div>
+    </div>
+
+    <div class="q-block">
+      <div class="q-meta"><span class="q-n">08</span><span class="q-tag">Valores</span><span class="q-req">* requerido</span></div>
+      <div class="q-label">¿Cuáles son los valores de la marca? Selecciona todos los que apliquen.</div>
+      <div class="chip-grid">
+        <input type="checkbox" class="chip-opt" name="valores" id="v1" value="Sostenibilidad real"><label for="v1">Sostenibilidad real</label>
+        <input type="checkbox" class="chip-opt" name="valores" id="v2" value="Transparencia radical"><label for="v2">Transparencia radical</label>
+        <input type="checkbox" class="chip-opt" name="valores" id="v3" value="Innovación constante"><label for="v3">Innovación constante</label>
+        <input type="checkbox" class="chip-opt" name="valores" id="v4" value="Comunidad primero"><label for="v4">Comunidad primero</label>
+        <input type="checkbox" class="chip-opt" name="valores" id="v5" value="Autenticidad"><label for="v5">Autenticidad</label>
+        <input type="checkbox" class="chip-opt" name="valores" id="v6" value="Responsabilidad social"><label for="v6">Responsabilidad social</label>
+        <input type="checkbox" class="chip-opt" name="valores" id="v7" value="Bienestar integral"><label for="v7">Bienestar integral</label>
+        <input type="checkbox" class="chip-opt" name="valores" id="v8" value="Excelencia sin excusas"><label for="v8">Excelencia sin excusas</label>
+        <input type="checkbox" class="chip-opt" name="valores" id="v9" value="Accesibilidad / inclusión"><label for="v9">Accesibilidad / inclusión</label>
+        <input type="checkbox" class="chip-opt" name="valores" id="v10" value="Impacto ambiental positivo"><label for="v10">Impacto ambiental positivo</label>
+        <input type="checkbox" class="chip-opt" name="valores" id="v11" value="Alegría y disfrute"><label for="v11">Alegría y disfrute</label>
+        <input type="checkbox" class="chip-opt" name="valores" id="v12" value="Integridad"><label for="v12">Integridad</label>
+      </div>
+      <textarea name="valores_desc" style="margin-top:12px" placeholder="Descríbelos con tus palabras. ¿Qué significa cada valor en la práctica diaria?"></textarea>
+    </div>
+
+    <div class="q-block">
+      <div class="q-meta"><span class="q-n">09</span><span class="q-tag">Principios éticos</span></div>
+      <div class="q-label">¿Qué principios éticos guiarán la conducta de la marca? ¿Qué líneas nunca cruzarían?</div>
+      <div class="q-hint">Ej: Nunca comprometeremos la calidad por reducir costos. Siempre seremos transparentes sobre nuestros procesos.</div>
+      <textarea name="etica" placeholder="Principio 1: Nunca…&#10;Principio 2: Siempre…&#10;Principio 3: …"></textarea>
+    </div>
+
+    <div class="q-block">
+      <div class="q-meta"><span class="q-n">10</span><span class="q-tag">Compromiso social y ambiental</span></div>
+      <div class="q-label">¿Cuáles son los compromisos concretos de la marca con su entorno?</div>
+      <div class="chip-grid">
+        <input type="checkbox" class="chip-opt" name="compromisos" id="c1" value="Empaques sostenibles"><label for="c1">Empaques sostenibles</label>
+        <input type="checkbox" class="chip-opt" name="compromisos" id="c2" value="Cero residuos en producción"><label for="c2">Cero residuos</label>
+        <input type="checkbox" class="chip-opt" name="compromisos" id="c3" value="Proveedores locales y éticos"><label for="c3">Proveedores locales y éticos</label>
+        <input type="checkbox" class="chip-opt" name="compromisos" id="c4" value="Huella de carbono compensada"><label for="c4">Huella de carbono compensada</label>
+        <input type="checkbox" class="chip-opt" name="compromisos" id="c5" value="Donación o impacto por cada venta"><label for="c5">Donación por cada venta</label>
+        <input type="checkbox" class="chip-opt" name="compromisos" id="c6" value="Programa de reciclaje o devolución"><label for="c6">Programa de reciclaje</label>
+        <input type="checkbox" class="chip-opt" name="compromisos" id="c7" value="Certificaciones de calidad o sostenibilidad"><label for="c7">Certificaciones sostenibles</label>
+        <input type="checkbox" class="chip-opt" name="compromisos" id="c8" value="No aplica a nuestro sector"><label for="c8">No aplica a nuestro sector</label>
+      </div>
+    </div>
+
+    <div class="q-block">
+      <div class="q-meta"><span class="q-n">11</span><span class="q-tag">Lo que nunca serán</span><span class="q-req">* requerido</span></div>
+      <div class="q-label">¿Qué comportamientos, promesas o estéticas de otras marcas NO quieren que jamás se asocien con la suya?</div>
+      <div class="q-hint">Definir lo que NO son es tan poderoso como definir lo que sí son.</div>
+      <textarea name="no_somos" placeholder="Ej: No queremos parecer una empresa más del montón. No haremos promesas que no podemos cumplir…" required></textarea>
+    </div>
+  </div>
+
+  <div class="ch-divider"></div>
+
+  <!-- ══ CAP 03 ══ -->
+  <div class="ch-section" id="s3">
+    <div class="ch-header">
+      <div class="ch-num">03</div>
+      <div><h2>Narrativa, tono y voz de marca</h2><p>La historia que la marca cuenta, cómo la cuenta y qué palabras usa.</p></div>
+    </div>
+
+    <div class="q-block">
+      <div class="q-meta"><span class="q-n">12</span><span class="q-tag">Palabras de marca</span><span class="q-req">* requerido</span></div>
+      <div class="q-label">¿Con qué palabras describirías la marca? Selecciona todas las que la representen.</div>
+      <div class="chip-grid">
+        <input type="checkbox" class="chip-opt" name="palabras" id="p1" value="Vibrante"><label for="p1">Vibrante</label>
+        <input type="checkbox" class="chip-opt" name="palabras" id="p2" value="Consciente"><label for="p2">Consciente</label>
+        <input type="checkbox" class="chip-opt" name="palabras" id="p3" value="Científica"><label for="p3">Científica</label>
+        <input type="checkbox" class="chip-opt" name="palabras" id="p4" value="Natural"><label for="p4">Natural</label>
+        <input type="checkbox" class="chip-opt" name="palabras" id="p5" value="Poderosa"><label for="p5">Poderosa</label>
+        <input type="checkbox" class="chip-opt" name="palabras" id="p6" value="Accesible"><label for="p6">Accesible</label>
+        <input type="checkbox" class="chip-opt" name="palabras" id="p7" value="Innovadora"><label for="p7">Innovadora</label>
+        <input type="checkbox" class="chip-opt" name="palabras" id="p8" value="Auténtica"><label for="p8">Auténtica</label>
+        <input type="checkbox" class="chip-opt" name="palabras" id="p9" value="Energética"><label for="p9">Energética</label>
+        <input type="checkbox" class="chip-opt" name="palabras" id="p10" value="Sostenible"><label for="p10">Sostenible</label>
+        <input type="checkbox" class="chip-opt" name="palabras" id="p11" value="Cercana"><label for="p11">Cercana</label>
+        <input type="checkbox" class="chip-opt" name="palabras" id="p12" value="Premium"><label for="p12">Premium</label>
+        <input type="checkbox" class="chip-opt" name="palabras" id="p13" value="Divertida"><label for="p13">Divertida</label>
+        <input type="checkbox" class="chip-opt" name="palabras" id="p14" value="Honesta"><label for="p14">Honesta</label>
+        <input type="checkbox" class="chip-opt" name="palabras" id="p15" value="Transformadora"><label for="p15">Transformadora</label>
+        <input type="checkbox" class="chip-opt" name="palabras" id="p16" value="Local / con raíces propias"><label for="p16">Local / con raíces</label>
+        <input type="checkbox" class="chip-opt" name="palabras" id="p17" value="Activista"><label for="p17">Activista</label>
+        <input type="checkbox" class="chip-opt" name="palabras" id="p18" value="Fresca"><label for="p18">Fresca</label>
+      </div>
+      <input type="text" name="palabras_extra" style="margin-top:12px" placeholder="¿Hay otras palabras que no están arriba? Escríbelas aquí…">
+    </div>
+
+    <div class="q-block">
+      <div class="q-meta"><span class="q-n">13</span><span class="q-tag">Estilo y enfoque</span><span class="q-req">* requerido</span></div>
+      <div class="q-label">Si la marca tiene un estilo o enfoque particular, ¿cómo lo describirías?</div>
+      <div class="q-hint">¿Qué la hace diferente incluso antes de ver cualquier diseño?</div>
+      <textarea name="estilo" placeholder="Nuestro estilo es… Nuestro enfoque es diferente porque…" required></textarea>
+    </div>
+
+    <div class="q-block">
+      <div class="q-meta"><span class="q-n">14</span><span class="q-tag">Tono de voz</span><span class="q-req">* requerido</span></div>
+      <div class="q-label">¿Cómo debe sonar la marca en redes, empaque y mensajes? Selecciona hasta 3.</div>
+      <div class="chip-grid">
+        <input type="checkbox" class="chip-opt" name="tono" id="t1" value="Cercano y tú-a-tú"><label for="t1">Cercano y tú-a-tú</label>
+        <input type="checkbox" class="chip-opt" name="tono" id="t2" value="Inspiracional / motivador"><label for="t2">Inspiracional / motivador</label>
+        <input type="checkbox" class="chip-opt" name="tono" id="t3" value="Técnico / con evidencia"><label for="t3">Técnico / con evidencia</label>
+        <input type="checkbox" class="chip-opt" name="tono" id="t4" value="Divertido / con humor"><label for="t4">Divertido / con humor</label>
+        <input type="checkbox" class="chip-opt" name="tono" id="t5" value="Empoderador: tú puedes"><label for="t5">Empoderador: "tú puedes"</label>
+        <input type="checkbox" class="chip-opt" name="tono" id="t6" value="Activista / con propósito"><label for="t6">Activista / con propósito</label>
+        <input type="checkbox" class="chip-opt" name="tono" id="t7" value="Experto / autoridad"><label for="t7">Experto / autoridad</label>
+        <input type="checkbox" class="chip-opt" name="tono" id="t8" value="Cálido como un amigo"><label for="t8">Cálido como un amigo</label>
+        <input type="checkbox" class="chip-opt" name="tono" id="t9" value="Directo / sin rodeos"><label for="t9">Directo / sin rodeos</label>
+        <input type="checkbox" class="chip-opt" name="tono" id="t10" value="Poético / evocador"><label for="t10">Poético / evocador</label>
+      </div>
+    </div>
+
+    <div class="q-block">
+      <div class="q-meta"><span class="q-n">15</span><span class="q-tag">Vocabulario de marca</span></div>
+      <div class="q-label">¿Qué palabras deben usarse habitualmente? ¿Y cuáles nunca deben aparecer?</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:4px">
+        <div>
+          <div style="font-size:12px;font-weight:600;color:#2D5A4A;margin-bottom:6px;">✓ SÍ usamos</div>
+          <textarea name="vocab_si" placeholder="Palabras clave que sí deben aparecer…" style="min-height:80px"></textarea>
+        </div>
+        <div>
+          <div style="font-size:12px;font-weight:600;color:#B84040;margin-bottom:6px;">✗ NUNCA usamos</div>
+          <textarea name="vocab_no" placeholder="Palabras que deben evitarse siempre…" style="min-height:80px"></textarea>
+        </div>
+      </div>
+    </div>
+
+    <div class="q-block">
+      <div class="q-meta"><span class="q-n">16</span><span class="q-tag">Historia central</span><span class="q-req">* requerido</span></div>
+      <div class="q-label">¿Cuál es la historia que la marca va a contar al mundo?</div>
+      <div class="q-hint">El gran relato: por qué existe, qué defiende, a quién habla. El párrafo que irá en el empaque, el sitio web y cada presentación.</div>
+      <textarea name="historia" placeholder='"Nuestra marca nació porque…"' style="min-height:110px" required></textarea>
+    </div>
+
+    <div class="q-block">
+      <div class="q-meta"><span class="q-n">17</span><span class="q-tag">La frase de marca</span></div>
+      <div class="q-label">Si la marca pudiera tatuarse una sola frase que resume todo lo que es, ¿cuál sería?</div>
+      <div class="q-hint">Sin pensar demasiado. Lo espontáneo es más revelador que lo trabajado.</div>
+      <input type="text" name="frase_marca" placeholder='Ej: "Brilla desde adentro." / "Construimos lo que otros imaginan."'>
+    </div>
+  </div>
+
+  <div class="ch-divider"></div>
+
+  <!-- ══ CAP 04 ══ -->
+  <div class="ch-section" id="s4">
+    <div class="ch-header">
+      <div class="ch-num">04</div>
+      <div><h2>Audiencia y posicionamiento</h2><p>A quién le habla la marca, qué le gusta y cómo ve el mundo esa persona.</p></div>
+    </div>
+
+    <div class="q-block">
+      <div class="q-meta"><span class="q-n">18</span><span class="q-tag">Cliente ideal</span><span class="q-req">* requerido</span></div>
+      <div class="q-label">¿Quiénes son los clientes ideales y cómo los ayudan exactamente?</div>
+      <div class="q-hint">Descríbelos como personas reales: qué buscan, qué les importa, qué los enamora de una marca.</div>
+      <textarea name="cliente" placeholder="Perfil 1: …, busca …, le importa que…&#10;Perfil 2: …" required></textarea>
+    </div>
+
+    <div class="q-block">
+      <div class="q-meta"><span class="q-n">19</span><span class="q-tag">Gustos visuales del cliente</span></div>
+      <div class="q-label">¿Qué tipo de estética, contenido y marcas consume su cliente ideal?</div>
+      <div class="q-hint">Necesito saber qué universo visual habita esa persona para crear algo que le hable directamente.</div>
+      <div class="chip-grid">
+        <input type="checkbox" class="chip-opt" name="estetica_cliente" id="ec1" value="Natural / organic"><label for="ec1">Natural / organic</label>
+        <input type="checkbox" class="chip-opt" name="estetica_cliente" id="ec2" value="Minimalismo limpio"><label for="ec2">Minimalismo limpio</label>
+        <input type="checkbox" class="chip-opt" name="estetica_cliente" id="ec3" value="Colores vibrantes / atrevidos"><label for="ec3">Colores vibrantes</label>
+        <input type="checkbox" class="chip-opt" name="estetica_cliente" id="ec4" value="Estética técnica / performance"><label for="ec4">Técnica / performance</label>
+        <input type="checkbox" class="chip-opt" name="estetica_cliente" id="ec5" value="Wellness / calma y bienestar"><label for="ec5">Wellness / calma</label>
+        <input type="checkbox" class="chip-opt" name="estetica_cliente" id="ec6" value="Editorial / revista de moda"><label for="ec6">Editorial / moda</label>
+        <input type="checkbox" class="chip-opt" name="estetica_cliente" id="ec7" value="Streetwear / cultura urbana"><label for="ec7">Streetwear / urbano</label>
+        <input type="checkbox" class="chip-opt" name="estetica_cliente" id="ec8" value="Lujo discreto / premium"><label for="ec8">Lujo discreto / premium</label>
+        <input type="checkbox" class="chip-opt" name="estetica_cliente" id="ec9" value="Ilustración / arte indie"><label for="ec9">Ilustración / arte indie</label>
+        <input type="checkbox" class="chip-opt" name="estetica_cliente" id="ec10" value="Estética local / regional"><label for="ec10">Local / regional</label>
+      </div>
+    </div>
+
+    <div class="q-block">
+      <div class="q-meta"><span class="q-n">20</span><span class="q-tag">Miedo del cliente</span><span class="q-req">* requerido</span></div>
+      <div class="q-label">¿Cuál es el mayor miedo o frustración de su cliente al comprar o contratar en este sector?</div>
+      <div class="q-hint">Conocer este miedo permite que el diseño y la comunicación respondan directamente a él.</div>
+      <textarea name="miedo_cliente" placeholder="El mayor miedo de nuestro cliente es…&#10;La frustración más común que vemos es…" required></textarea>
+    </div>
+
+    <div class="q-block">
+      <div class="q-meta"><span class="q-n">21</span><span class="q-tag">Competencia</span><span class="q-req">* requerido</span></div>
+      <div class="q-label">¿Quiénes son sus principales competidores y cómo ven la marca frente a ellos?</div>
+      <div class="q-hint">¿En qué los superan hoy? ¿En qué deben mejorar? ¿Cuál es la ventaja real?</div>
+      <textarea name="competencia" placeholder="Competidor 1: … — los superamos en: …&#10;Competidor 2: … — debemos mejorar en: …&#10;Nuestra ventaja real es: …" required></textarea>
+    </div>
+  </div>
+
+  <div class="ch-divider"></div>
+
+  <!-- ══ CAP 05 ══ -->
+  <div class="ch-section" id="s5">
+    <div class="ch-header">
+      <div class="ch-num">05</div>
+      <div><h2>Carácter visual y paleta de color</h2><p>Escalas de personalidad y colores de la nueva identidad.</p></div>
+    </div>
+
+    <div class="q-block">
+      <div class="q-meta"><span class="q-n">22</span><span class="q-tag">Personalidad visual</span><span class="q-req">* requerido</span></div>
+      <div class="q-label">Escalas de carácter — mueve cada escala al polo que mejor represente la marca.</div>
+      <div class="q-hint">No hay respuesta correcta. Confía en tu intuición.</div>
+      <div id="scalesWrap">
+        <div class="scale-row"><span class="scale-left">Simple / minimalista</span><div class="scale-mid"><input type="range" min="1" max="10" value="5" name="esc_simple" oninput="updScale(this,'sv1')"><div class="scale-val" id="sv1">5</div></div><span class="scale-right">Compleja / detallada</span></div>
+        <div class="scale-row"><span class="scale-left">Colorida / vibrante</span><div class="scale-mid"><input type="range" min="1" max="10" value="5" name="esc_colorida" oninput="updScale(this,'sv2')"><div class="scale-val" id="sv2">5</div></div><span class="scale-right">Neutra / gris</span></div>
+        <div class="scale-row"><span class="scale-left">Convencional / clásica</span><div class="scale-mid"><input type="range" min="1" max="10" value="5" name="esc_convencional" oninput="updScale(this,'sv3')"><div class="scale-val" id="sv3">5</div></div><span class="scale-right">Rebelde / disruptiva</span></div>
+        <div class="scale-row"><span class="scale-left">Amigable / accesible</span><div class="scale-mid"><input type="range" min="1" max="10" value="5" name="esc_amigable" oninput="updScale(this,'sv4')"><div class="scale-val" id="sv4">5</div></div><span class="scale-right">Autoritaria / premium</span></div>
+        <div class="scale-row"><span class="scale-left">Orgánica / natural</span><div class="scale-mid"><input type="range" min="1" max="10" value="5" name="esc_organica" oninput="updScale(this,'sv5')"><div class="scale-val" id="sv5">5</div></div><span class="scale-right">Tecnológica / digital</span></div>
+        <div class="scale-row"><span class="scale-left">Femenina / suave</span><div class="scale-mid"><input type="range" min="1" max="10" value="5" name="esc_femenina" oninput="updScale(this,'sv6')"><div class="scale-val" id="sv6">5</div></div><span class="scale-right">Masculina / fuerte</span></div>
+        <div class="scale-row"><span class="scale-left">Divertida / playful</span><div class="scale-mid"><input type="range" min="1" max="10" value="5" name="esc_divertida" oninput="updScale(this,'sv7')"><div class="scale-val" id="sv7">5</div></div><span class="scale-right">Seria / profesional</span></div>
+        <div class="scale-row"><span class="scale-left">Local / con raíces</span><div class="scale-mid"><input type="range" min="1" max="10" value="5" name="esc_local" oninput="updScale(this,'sv8')"><div class="scale-val" id="sv8">5</div></div><span class="scale-right">Global / internacional</span></div>
+        <div class="scale-row"><span class="scale-left">Activa / dinámica</span><div class="scale-mid"><input type="range" min="1" max="10" value="5" name="esc_activa" oninput="updScale(this,'sv9')"><div class="scale-val" id="sv9">5</div></div><span class="scale-right">Calmada / equilibrada</span></div>
+      </div>
+    </div>
+
+    <div class="q-block">
+      <div class="q-meta"><span class="q-n">23</span><span class="q-tag">Color principal</span><span class="q-req">* requerido</span></div>
+      <div class="q-label">¿Qué familia de color debería dominar la nueva identidad?</div>
+      <div class="swatch-grid">
+        <input type="radio" class="swatch-opt" name="color_principal" id="cp1" value="Verde selva #2D5A4A"><label for="cp1"><div class="swatch-color" style="background:#2D5A4A"></div><div class="swatch-name">Verde selva<br><span class="swatch-hex">#2D5A4A</span></div></label>
+        <input type="radio" class="swatch-opt" name="color_principal" id="cp2" value="Verde fresco #3DAA76"><label for="cp2"><div class="swatch-color" style="background:#3DAA76"></div><div class="swatch-name">Verde fresco<br><span class="swatch-hex">#3DAA76</span></div></label>
+        <input type="radio" class="swatch-opt" name="color_principal" id="cp3" value="Naranja #E07B39"><label for="cp3"><div class="swatch-color" style="background:#E07B39"></div><div class="swatch-name">Naranja<br><span class="swatch-hex">#E07B39</span></div></label>
+        <input type="radio" class="swatch-opt" name="color_principal" id="cp4" value="Rosa vital #E91E8C"><label for="cp4"><div class="swatch-color" style="background:#E91E8C"></div><div class="swatch-name">Rosa vital<br><span class="swatch-hex">#E91E8C</span></div></label>
+        <input type="radio" class="swatch-opt" name="color_principal" id="cp5" value="Azul #1A73E8"><label for="cp5"><div class="swatch-color" style="background:#1A73E8"></div><div class="swatch-name">Azul<br><span class="swatch-hex">#1A73E8</span></div></label>
+        <input type="radio" class="swatch-opt" name="color_principal" id="cp6" value="Morado #8E44AD"><label for="cp6"><div class="swatch-color" style="background:#8E44AD"></div><div class="swatch-name">Morado<br><span class="swatch-hex">#8E44AD</span></div></label>
+        <input type="radio" class="swatch-opt" name="color_principal" id="cp7" value="Rojo #C0392B"><label for="cp7"><div class="swatch-color" style="background:#C0392B"></div><div class="swatch-name">Rojo<br><span class="swatch-hex">#C0392B</span></div></label>
+        <input type="radio" class="swatch-opt" name="color_principal" id="cp8" value="Dorado #D4A017"><label for="cp8"><div class="swatch-color" style="background:#D4A017"></div><div class="swatch-name">Dorado<br><span class="swatch-hex">#D4A017</span></div></label>
+        <input type="radio" class="swatch-opt" name="color_principal" id="cp9" value="Tierra #8D6E63"><label for="cp9"><div class="swatch-color" style="background:#8D6E63"></div><div class="swatch-name">Tierra<br><span class="swatch-hex">#8D6E63</span></div></label>
+        <input type="radio" class="swatch-opt" name="color_principal" id="cp10" value="Negro #1A1A1A"><label for="cp10"><div class="swatch-color" style="background:#1A1A1A"></div><div class="swatch-name">Negro<br><span class="swatch-hex">#1A1A1A</span></div></label>
+      </div>
+      <input type="text" name="color_principal_otro" style="margin-top:12px" placeholder="Otro color no listado (nombre o código HEX)…">
+    </div>
+
+    <div class="q-block">
+      <div class="q-meta"><span class="q-n">24</span><span class="q-tag">Color de acento</span></div>
+      <div class="q-label">¿Qué color secundario complementará la paleta?</div>
+      <div class="swatch-grid">
+        <input type="radio" class="swatch-opt" name="color_acento" id="ca1" value="Crema #F5F0E8"><label for="ca1"><div class="swatch-color" style="background:#F5F0E8;border:1px solid #ddd"></div><div class="swatch-name">Crema<br><span class="swatch-hex">#F5F0E8</span></div></label>
+        <input type="radio" class="swatch-opt" name="color_acento" id="ca2" value="Blanco #F2F2F2"><label for="ca2"><div class="swatch-color" style="background:#F2F2F2;border:1px solid #ddd"></div><div class="swatch-name">Blanco<br><span class="swatch-hex">#F2F2F2</span></div></label>
+        <input type="radio" class="swatch-opt" name="color_acento" id="ca3" value="Verde claro #E8F5E9"><label for="ca3"><div class="swatch-color" style="background:#E8F5E9"></div><div class="swatch-name">Verde claro<br><span class="swatch-hex">#E8F5E9</span></div></label>
+        <input type="radio" class="swatch-opt" name="color_acento" id="ca4" value="Coral #FF6B35"><label for="ca4"><div class="swatch-color" style="background:#FF6B35"></div><div class="swatch-name">Coral<br><span class="swatch-hex">#FF6B35</span></div></label>
+        <input type="radio" class="swatch-opt" name="color_acento" id="ca5" value="Rosa pálido #FCE4EC"><label for="ca5"><div class="swatch-color" style="background:#FCE4EC"></div><div class="swatch-name">Rosa pálido<br><span class="swatch-hex">#FCE4EC</span></div></label>
+        <input type="radio" class="swatch-opt" name="color_acento" id="ca6" value="Ámbar #FFD54F"><label for="ca6"><div class="swatch-color" style="background:#FFD54F"></div><div class="swatch-name">Ámbar<br><span class="swatch-hex">#FFD54F</span></div></label>
+        <input type="radio" class="swatch-opt" name="color_acento" id="ca7" value="Cian #00BCD4"><label for="ca7"><div class="swatch-color" style="background:#00BCD4"></div><div class="swatch-name">Cian<br><span class="swatch-hex">#00BCD4</span></div></label>
+        <input type="radio" class="swatch-opt" name="color_acento" id="ca8" value="Gris #9E9E9E"><label for="ca8"><div class="swatch-color" style="background:#9E9E9E"></div><div class="swatch-name">Gris<br><span class="swatch-hex">#9E9E9E</span></div></label>
+        <input type="radio" class="swatch-opt" name="color_acento" id="ca9" value="Lavanda #EDE7F6"><label for="ca9"><div class="swatch-color" style="background:#EDE7F6"></div><div class="swatch-name">Lavanda<br><span class="swatch-hex">#EDE7F6</span></div></label>
+        <input type="radio" class="swatch-opt" name="color_acento" id="ca10" value="Amarillo #FFF3CD"><label for="ca10"><div class="swatch-color" style="background:#FFF3CD;border:1px solid #ddd"></div><div class="swatch-name">Amarillo<br><span class="swatch-hex">#FFF3CD</span></div></label>
+      </div>
+      <input type="text" name="color_acento_otro" style="margin-top:12px" placeholder="Otro color de acento…">
+    </div>
+
+    <div class="q-block">
+      <div class="q-meta"><span class="q-n">25</span><span class="q-tag">Emoción del color</span></div>
+      <div class="q-label">¿Qué debe transmitir la nueva paleta al primer vistazo? Elige hasta 3.</div>
+      <div class="chip-grid">
+        <input type="checkbox" class="chip-opt" name="emocion_color" id="em1" value="Salud y vitalidad"><label for="em1">Salud y vitalidad</label>
+        <input type="checkbox" class="chip-opt" name="emocion_color" id="em2" value="Confianza y solidez"><label for="em2">Confianza y solidez</label>
+        <input type="checkbox" class="chip-opt" name="emocion_color" id="em3" value="Energía y movimiento"><label for="em3">Energía y movimiento</label>
+        <input type="checkbox" class="chip-opt" name="emocion_color" id="em4" value="Naturaleza / origen"><label for="em4">Naturaleza / origen</label>
+        <input type="checkbox" class="chip-opt" name="emocion_color" id="em5" value="Lujo accesible"><label for="em5">Lujo accesible</label>
+        <input type="checkbox" class="chip-opt" name="emocion_color" id="em6" value="Frescura / limpieza"><label for="em6">Frescura / limpieza</label>
+        <input type="checkbox" class="chip-opt" name="emocion_color" id="em7" value="Bienestar y calma"><label for="em7">Bienestar y calma</label>
+        <input type="checkbox" class="chip-opt" name="emocion_color" id="em8" value="Responsabilidad / sostenibilidad"><label for="em8">Responsabilidad</label>
+        <input type="checkbox" class="chip-opt" name="emocion_color" id="em9" value="Poder / rendimiento"><label for="em9">Poder / rendimiento</label>
+      </div>
+    </div>
+
+    <div class="q-block">
+      <div class="q-meta"><span class="q-n">26</span><span class="q-tag">Estilo de los elementos</span></div>
+      <div class="q-label">¿Con qué estilo gráfico se identifican para los elementos visuales?</div>
+      <div class="chip-grid">
+        <input type="checkbox" class="chip-opt" name="estilo_grafico" id="eg1" value="Geométrico puro"><label for="eg1">Geométrico puro</label>
+        <input type="checkbox" class="chip-opt" name="estilo_grafico" id="eg2" value="Orgánico / fluido"><label for="eg2">Orgánico / fluido</label>
+        <input type="checkbox" class="chip-opt" name="estilo_grafico" id="eg3" value="Ilustrado / artesanal"><label for="eg3">Ilustrado / artesanal</label>
+        <input type="checkbox" class="chip-opt" name="estilo_grafico" id="eg4" value="Flat / digital"><label for="eg4">Flat / digital</label>
+        <input type="checkbox" class="chip-opt" name="estilo_grafico" id="eg5" value="Botánico / natural"><label for="eg5">Botánico / natural</label>
+        <input type="checkbox" class="chip-opt" name="estilo_grafico" id="eg6" value="Editorial / limpio"><label for="eg6">Editorial / limpio</label>
+        <input type="checkbox" class="chip-opt" name="estilo_grafico" id="eg7" value="3D / con volumen"><label for="eg7">3D / con volumen</label>
+        <input type="checkbox" class="chip-opt" name="estilo_grafico" id="eg8" value="Tipográfico como gráfico"><label for="eg8">Tipográfico como gráfico</label>
+      </div>
+    </div>
+
+    <div class="q-block">
+      <div class="q-meta"><span class="q-n">27</span><span class="q-tag">Referentes visuales</span><span class="q-req">* requerido</span></div>
+      <div class="q-label">¿Qué marcas les generan interés o admiración visualmente? (cualquier industria)</div>
+      <div class="q-hint">Lo que importa es qué universo visual, tono o estética les atrae. Explica por qué en cada caso.</div>
+      <textarea name="referentes" placeholder="Marca 1: … — me interesa porque…&#10;Marca 2: … — me interesa porque…&#10;Marca 3: … — me interesa porque…" required></textarea>
+    </div>
+
+    <div class="q-block">
+      <div class="q-meta"><span class="q-n">28</span><span class="q-tag">Anti-referentes visuales</span><span class="q-req">* requerido</span></div>
+      <div class="q-label">¿Hay alguna estética o estilo visual que definitivamente NO debe aparecer en la marca?</div>
+      <textarea name="anti_referentes" placeholder="Ej: Sin exceso de colores. Nada que parezca genérico o corporativo frío…" required></textarea>
+    </div>
+  </div>
+
+  <div class="ch-divider"></div>
+
+  <!-- ══ CAP 06 ══ -->
+  <div class="ch-section" id="s6">
+    <div class="ch-header">
+      <div class="ch-num">06</div>
+      <div><h2>Packaging y presencia digital</h2><p>Solo si tienen producto físico. Marca "No aplica" si es empresa de servicios.</p></div>
+    </div>
+
+    <div class="note-box">Responde este capítulo solo si la marca comercializa productos físicos con empaque. Si es una empresa de servicios, consultoría o tecnología sin producto físico, marca "No aplica" en las preguntas correspondientes.</div>
+
+    <div class="q-block">
+      <div class="q-meta"><span class="q-n">29</span><span class="q-tag">Formato del empaque</span></div>
+      <div class="q-label">¿Qué tipo de empaque imaginas para el producto?</div>
+      <div class="chip-grid">
+        <input type="radio" class="chip-opt" name="empaque" id="em_1" value="Frasco / tarro rígido"><label for="em_1">Frasco / tarro rígido</label>
+        <input type="radio" class="chip-opt" name="empaque" id="em_2" value="Bolsa / doypack con cierre"><label for="em_2">Bolsa / doypack</label>
+        <input type="radio" class="chip-opt" name="empaque" id="em_3" value="Caja de cartón"><label for="em_3">Caja de cartón</label>
+        <input type="radio" class="chip-opt" name="empaque" id="em_4" value="Lata metálica"><label for="em_4">Lata metálica</label>
+        <input type="radio" class="chip-opt" name="empaque" id="em_5" value="Caja + sachets / sobres"><label for="em_5">Caja + sachets</label>
+        <input type="radio" class="chip-opt" name="empaque" id="em_6" value="No aplica — empresa de servicios"><label for="em_6">No aplica</label>
+      </div>
+    </div>
+
+    <div class="q-block">
+      <div class="q-meta"><span class="q-n">30</span><span class="q-tag">Sistema de variantes</span></div>
+      <div class="q-label">¿Cuántas referencias o variantes tendrá el producto y cómo deben diferenciarse?</div>
+      <div class="chip-grid">
+        <input type="checkbox" class="chip-opt" name="variantes" id="va1" value="Color de fondo diferente por variante"><label for="va1">Color de fondo diferente</label>
+        <input type="checkbox" class="chip-opt" name="variantes" id="va2" value="Franja o banda de color"><label for="va2">Franja o banda de color</label>
+        <input type="checkbox" class="chip-opt" name="variantes" id="va3" value="Ilustración distinta por variante"><label for="va3">Ilustración distinta</label>
+        <input type="checkbox" class="chip-opt" name="variantes" id="va4" value="Solo el nombre de la variante cambia"><label for="va4">Solo el nombre cambia</label>
+        <input type="checkbox" class="chip-opt" name="variantes" id="va5" value="No aplica"><label for="va5">No aplica</label>
+      </div>
+      <textarea name="variantes_desc" style="margin-top:12px" placeholder="Variantes previstas: …&#10;La variante de lanzamiento será: …"></textarea>
+    </div>
+
+    <div class="q-block">
+      <div class="q-meta"><span class="q-n">31</span><span class="q-tag">Diseño de cara frontal</span></div>
+      <div class="q-label">¿Cómo debería organizarse visualmente la cara frontal del empaque?</div>
+      <div class="chip-grid">
+        <input type="radio" class="chip-opt" name="cara_frontal" id="cf1" value="Logo grande + información abajo"><label for="cf1">Logo grande + info abajo</label>
+        <input type="radio" class="chip-opt" name="cara_frontal" id="cf2" value="Gran fotografía del producto o ingredientes"><label for="cf2">Gran fotografía</label>
+        <input type="radio" class="chip-opt" name="cara_frontal" id="cf3" value="Tipografía como elemento visual principal"><label for="cf3">Tipografía protagonista</label>
+        <input type="radio" class="chip-opt" name="cara_frontal" id="cf4" value="Color de la variante domina el fondo"><label for="cf4">Color domina el fondo</label>
+        <input type="radio" class="chip-opt" name="cara_frontal" id="cf5" value="Ilustración como protagonista"><label for="cf5">Ilustración protagonista</label>
+        <input type="radio" class="chip-opt" name="cara_frontal" id="cf6" value="Muy minimalista: solo nombre y variante"><label for="cf6">Muy minimalista</label>
+        <input type="radio" class="chip-opt" name="cara_frontal" id="cf7" value="No aplica"><label for="cf7">No aplica</label>
+      </div>
+    </div>
+
+    <div class="q-block">
+      <div class="q-meta"><span class="q-n">32</span><span class="q-tag">Acabados</span></div>
+      <div class="q-label">¿Qué tipo de acabado o textura imaginas en el empaque?</div>
+      <div class="chip-grid">
+        <input type="checkbox" class="chip-opt" name="acabados" id="ac1" value="Mate / sin brillo"><label for="ac1">Mate / sin brillo</label>
+        <input type="checkbox" class="chip-opt" name="acabados" id="ac2" value="Brillante / glossy"><label for="ac2">Brillante / glossy</label>
+        <input type="checkbox" class="chip-opt" name="acabados" id="ac3" value="Kraft / papel natural"><label for="ac3">Kraft / papel natural</label>
+        <input type="checkbox" class="chip-opt" name="acabados" id="ac4" value="Metálico / foil dorado o plateado"><label for="ac4">Metálico / foil</label>
+        <input type="checkbox" class="chip-opt" name="acabados" id="ac5" value="Soft touch / aterciopelado"><label for="ac5">Soft touch</label>
+        <input type="checkbox" class="chip-opt" name="acabados" id="ac6" value="Ventana transparente al producto"><label for="ac6">Ventana transparente</label>
+        <input type="checkbox" class="chip-opt" name="acabados" id="ac7" value="No aplica"><label for="ac7">No aplica</label>
+      </div>
+    </div>
+
+    <div class="q-block">
+      <div class="q-meta"><span class="q-n">33</span><span class="q-tag">Fotografía y contenido visual</span></div>
+      <div class="q-label">¿Qué tipo de imagen visual debe tener la marca en redes sociales?</div>
+      <div class="chip-grid">
+        <input type="checkbox" class="chip-opt" name="foto_redes" id="fr1" value="Producto hero en estudio"><label for="fr1">Producto hero en estudio</label>
+        <input type="checkbox" class="chip-opt" name="foto_redes" id="fr2" value="Lifestyle / entorno natural"><label for="fr2">Lifestyle / entorno natural</label>
+        <input type="checkbox" class="chip-opt" name="foto_redes" id="fr3" value="Personas usando el producto o servicio"><label for="fr3">Personas usando el producto</label>
+        <input type="checkbox" class="chip-opt" name="foto_redes" id="fr4" value="Detalles / texturas / procesos"><label for="fr4">Detalles / texturas</label>
+      </div>
+    </div>
+
+    <div class="q-block">
+      <div class="q-meta"><span class="q-n">34</span><span class="q-tag">Contenido en redes</span></div>
+      <div class="q-label">¿Qué tipo de contenido debería publicarse regularmente?</div>
+      <div class="chip-grid">
+        <input type="checkbox" class="chip-opt" name="contenido" id="co1" value="Antes / después reales"><label for="co1">Antes / después reales</label>
+        <input type="checkbox" class="chip-opt" name="contenido" id="co2" value="Educación sobre el sector o producto"><label for="co2">Educación / sector</label>
+        <input type="checkbox" class="chip-opt" name="contenido" id="co3" value="Detrás de cámaras del proceso"><label for="co3">Detrás de cámaras</label>
+        <input type="checkbox" class="chip-opt" name="contenido" id="co4" value="Testimonios de clientes"><label for="co4">Testimonios de clientes</label>
+        <input type="checkbox" class="chip-opt" name="contenido" id="co5" value="Contenido de propósito / sostenibilidad"><label for="co5">Propósito / sostenibilidad</label>
+        <input type="checkbox" class="chip-opt" name="contenido" id="co6" value="Lanzamientos y novedades"><label for="co6">Lanzamientos</label>
+        <input type="checkbox" class="chip-opt" name="contenido" id="co7" value="Colaboraciones con otras marcas o creadores"><label for="co7">Colaboraciones</label>
+        <input type="checkbox" class="chip-opt" name="contenido" id="co8" value="Entretenimiento / humor relacionado al sector"><label for="co8">Entretenimiento / humor</label>
+        <input type="checkbox" class="chip-opt" name="contenido" id="co9" value="Tips o consejos útiles para el cliente"><label for="co9">Tips y consejos</label>
+        <input type="checkbox" class="chip-opt" name="contenido" id="co10" value="No hemos definido una estrategia aún"><label for="co10">Aún sin definir</label>
+      </div>
+    </div>
+  </div>
+
+  <div class="ch-divider"></div>
+
+  <!-- ══ CAP 07 ══ -->
+  <div class="ch-section" id="s7">
+    <div class="ch-header">
+      <div class="ch-num">07</div>
+      <div><h2>El nuevo nombre</h2><p>El nombre es la pieza más estratégica. Antes de crearlo, hay que entender qué debe comunicar.</p></div>
+    </div>
+
+    <div class="note-box">Responde este capítulo solo si desean crear o cambiar el nombre de la marca. Si el nombre está definido y no cambiará, marca "No aplica" y pasa al capítulo 08.</div>
+
+    <div class="q-block">
+      <div class="q-meta"><span class="q-n">35</span><span class="q-tag">Por qué cambiar</span></div>
+      <div class="q-label">¿Por qué sienten que el nombre actual no los representa? ¿Qué no les comunica?</div>
+      <div class="q-hint">Esta respuesta define el territorio que el nuevo nombre debe evitar.</div>
+      <textarea name="cambio_nombre" placeholder="El nombre actual no nos representa porque…&#10;Lo que esperamos del nuevo nombre es…"></textarea>
+    </div>
+
+    <div class="q-block">
+      <div class="q-meta"><span class="q-n">36</span><span class="q-tag">Qué comunica el nombre</span><span class="q-req">* requerido</span></div>
+      <div class="q-label">¿Qué debe transmitir el nuevo nombre al escucharlo por primera vez? Selecciona hasta 3.</div>
+      <div class="chip-grid">
+        <input type="checkbox" class="chip-opt" name="comunica_nombre" id="cn1" value="Naturaleza / ingredientes reales"><label for="cn1">Naturaleza / ingredientes</label>
+        <input type="checkbox" class="chip-opt" name="comunica_nombre" id="cn2" value="Energía y rendimiento"><label for="cn2">Energía y rendimiento</label>
+        <input type="checkbox" class="chip-opt" name="comunica_nombre" id="cn3" value="Bienestar y calma"><label for="cn3">Bienestar y calma</label>
+        <input type="checkbox" class="chip-opt" name="comunica_nombre" id="cn4" value="Lujo o exclusividad"><label for="cn4">Lujo o exclusividad</label>
+        <input type="checkbox" class="chip-opt" name="comunica_nombre" id="cn5" value="Identidad local / raíces"><label for="cn5">Identidad local / raíces</label>
+        <input type="checkbox" class="chip-opt" name="comunica_nombre" id="cn6" value="Modernidad / innovación"><label for="cn6">Modernidad / innovación</label>
+        <input type="checkbox" class="chip-opt" name="comunica_nombre" id="cn7" value="Confianza / trayectoria"><label for="cn7">Confianza / trayectoria</label>
+        <input type="checkbox" class="chip-opt" name="comunica_nombre" id="cn8" value="Diversión / energía joven"><label for="cn8">Diversión / energía joven</label>
+        <input type="checkbox" class="chip-opt" name="comunica_nombre" id="cn9" value="Propósito y transformación"><label for="cn9">Propósito y transformación</label>
+      </div>
+    </div>
+
+    <div class="q-block">
+      <div class="q-meta"><span class="q-n">37</span><span class="q-tag">Tipo de nombre</span></div>
+      <div class="q-label">¿Qué tipo de nombre les llama más la atención?</div>
+      <div class="chip-grid">
+        <input type="radio" class="chip-opt" name="tipo_nombre" id="tn1" value="Palabra real con significado (ej: Roots, Alma, Tierra)"><label for="tn1">Palabra real con significado</label>
+        <input type="radio" class="chip-opt" name="tipo_nombre" id="tn2" value="Palabra inventada / neologismo (ej: Spotify, Zara, Häagen-Dazs)"><label for="tn2">Palabra inventada</label>
+        <input type="radio" class="chip-opt" name="tipo_nombre" id="tn3" value="Nombre del fundador o persona real"><label for="tn3">Nombre del fundador</label>
+        <input type="radio" class="chip-opt" name="tipo_nombre" id="tn4" value="Acrónimo o siglas"><label for="tn4">Acrónimo / siglas</label>
+        <input type="radio" class="chip-opt" name="tipo_nombre" id="tn5" value="Frase o combinación de palabras"><label for="tn5">Frase o combinación</label>
+        <input type="radio" class="chip-opt" name="tipo_nombre" id="tn6" value="Número o símbolo integrado"><label for="tn6">Número o símbolo</label>
+      </div>
+    </div>
+
+    <div class="q-block">
+      <div class="q-meta"><span class="q-n">38</span><span class="q-tag">Idioma del nombre</span></div>
+      <div class="q-label">¿En qué idioma o mezcla debería estar el nombre?</div>
+      <div class="chip-grid">
+        <input type="radio" class="chip-opt" name="idioma_nombre" id="in1" value="Español puro"><label for="in1">Español puro</label>
+        <input type="radio" class="chip-opt" name="idioma_nombre" id="in2" value="Inglés puro"><label for="in2">Inglés puro</label>
+        <input type="radio" class="chip-opt" name="idioma_nombre" id="in3" value="Mezcla español / inglés"><label for="in3">Mezcla español / inglés</label>
+        <input type="radio" class="chip-opt" name="idioma_nombre" id="in4" value="Palabra en otro idioma (francés, italiano, latín…)"><label for="in4">Otro idioma (francés, italiano, latín…)</label>
+        <input type="radio" class="chip-opt" name="idioma_nombre" id="in5" value="Palabra inventada sin idioma definido"><label for="in5">Palabra inventada</label>
+      </div>
+    </div>
+
+    <div class="q-block">
+      <div class="q-meta"><span class="q-n">39</span><span class="q-tag">Longitud y sonido</span></div>
+      <div class="q-label">¿Cómo debe sentirse el nombre al pronunciarlo?</div>
+      <div style="margin-top:8px">
+        <div class="scale-row"><span class="scale-left">Muy corto (1–2 sílabas)</span><div class="scale-mid"><input type="range" min="1" max="10" value="5" name="esc_silabas" oninput="updScale(this,'sn1')"><div class="scale-val" id="sn1">5</div></div><span class="scale-right">Más largo y elaborado</span></div>
+        <div class="scale-row"><span class="scale-left">Suave / susurrable</span><div class="scale-mid"><input type="range" min="1" max="10" value="5" name="esc_sonido" oninput="updScale(this,'sn2')"><div class="scale-val" id="sn2">5</div></div><span class="scale-right">Fuerte / impactante</span></div>
+        <div class="scale-row"><span class="scale-left">Fácil de escribir</span><div class="scale-mid"><input type="range" min="1" max="10" value="5" name="esc_escritura" oninput="updScale(this,'sn3')"><div class="scale-val" id="sn3">5</div></div><span class="scale-right">Puede ser único / con carácter</span></div>
+      </div>
+    </div>
+
+    <div class="q-block">
+      <div class="q-meta"><span class="q-n">40</span><span class="q-tag">Palabras semilla</span></div>
+      <div class="q-label">¿Hay palabras, conceptos o raíces que ya los inspiran para el nombre?</div>
+      <div class="q-hint">No tienen que ser el nombre final. Son pistas del territorio. Puede ser en cualquier idioma.</div>
+      <textarea name="palabras_semilla" placeholder="Ej: raíz, brillo, verde, fuerza, alma, vive, origen, flux…"></textarea>
+    </div>
+
+    <div class="q-block">
+      <div class="q-meta"><span class="q-n">41</span><span class="q-tag">Nombres que les gustan</span></div>
+      <div class="q-label">¿Hay nombres de otras marcas que admiran por su construcción, sonido o imagen?</div>
+      <textarea name="nombres_gustan" placeholder="Nombre 1: … — me gusta porque…&#10;Nombre 2: … — me gusta porque…"></textarea>
+    </div>
+
+    <div class="q-block">
+      <div class="q-meta"><span class="q-n">42</span><span class="q-tag">Anti-referentes del nombre</span></div>
+      <div class="q-label">¿A qué tipo de marcas NO debe sonar ni parecerse el nuevo nombre?</div>
+      <textarea name="anti_nombre" placeholder="Ej: No debe sonar a marca de farmacia. Nada que recuerde a la competencia genérica…"></textarea>
+    </div>
+  </div>
+
+  <div class="ch-divider"></div>
+
+  <!-- ══ CAP 08 ══ -->
+  <div class="ch-section" id="s8">
+    <div class="ch-header">
+      <div class="ch-num">08</div>
+      <div><h2>Logotipo y tipografía</h2><p>La pieza central de la identidad visual — cómo se escribe y se ve el nombre.</p></div>
+    </div>
+
+    <div class="q-block">
+      <div class="q-meta"><span class="q-n">43</span><span class="q-tag">Tipo de logo</span><span class="q-req">* requerido</span></div>
+      <div class="q-label">¿Qué tipo de logotipo prefieren para la marca?</div>
+      <div class="chip-grid">
+        <input type="radio" class="chip-opt" name="tipo_logo" id="tl1" value="Solo tipografía (wordmark)"><label for="tl1">Solo tipografía (wordmark)</label>
+        <input type="radio" class="chip-opt" name="tipo_logo" id="tl2" value="Tipografía + símbolo juntos"><label for="tl2">Tipografía + símbolo</label>
+        <input type="radio" class="chip-opt" name="tipo_logo" id="tl3" value="Solo símbolo / ícono (para usar solos)"><label for="tl3">Solo símbolo / ícono</label>
+        <input type="radio" class="chip-opt" name="tipo_logo" id="tl4" value="Monograma / iniciales"><label for="tl4">Monograma / iniciales</label>
+        <input type="radio" class="chip-opt" name="tipo_logo" id="tl5" value="Emblema / sello cerrado"><label for="tl5">Emblema / sello</label>
+      </div>
+    </div>
+
+    <div class="q-block">
+      <div class="q-meta"><span class="q-n">44</span><span class="q-tag">Versiones del logo</span><span class="q-req">* requerido</span></div>
+      <div class="q-label">¿En qué versiones necesitan que funcione el logotipo?</div>
+      <div class="chip-grid">
+        <input type="checkbox" class="chip-opt" name="versiones_logo" id="vl1" value="Horizontal (apaisado)"><label for="vl1">Horizontal</label>
+        <input type="checkbox" class="chip-opt" name="versiones_logo" id="vl2" value="Vertical (apilado)"><label for="vl2">Vertical</label>
+        <input type="checkbox" class="chip-opt" name="versiones_logo" id="vl3" value="Versión compacta / ícono solo"><label for="vl3">Ícono solo</label>
+        <input type="checkbox" class="chip-opt" name="versiones_logo" id="vl4" value="En fondo oscuro"><label for="vl4">En fondo oscuro</label>
+        <input type="checkbox" class="chip-opt" name="versiones_logo" id="vl5" value="En fondo claro"><label for="vl5">En fondo claro</label>
+        <input type="checkbox" class="chip-opt" name="versiones_logo" id="vl6" value="Monocromo / una sola tinta"><label for="vl6">Monocromo</label>
+      </div>
+    </div>
+
+    <div class="q-block">
+      <div class="q-meta"><span class="q-n">45</span><span class="q-tag">Caja tipográfica</span></div>
+      <div class="q-label">¿Cómo debe escribirse el nombre de la marca en el logotipo?</div>
+      <div class="chip-grid">
+        <input type="radio" class="chip-opt" name="caja" id="ca_1" value="Todo en MAYÚSCULAS"><label for="ca_1">Todo en MAYÚSCULAS</label>
+        <input type="radio" class="chip-opt" name="caja" id="ca_2" value="Todo en minúsculas"><label for="ca_2">Todo en minúsculas</label>
+        <input type="radio" class="chip-opt" name="caja" id="ca_3" value="Primera letra en mayúscula (Title Case)"><label for="ca_3">Primera letra mayúscula</label>
+        <input type="radio" class="chip-opt" name="caja" id="ca_4" value="CamelCase (ej: BrandName)"><label for="ca_4">CamelCase</label>
+        <input type="radio" class="chip-opt" name="caja" id="ca_5" value="No tengo preferencia"><label for="ca_5">Sin preferencia</label>
+      </div>
+    </div>
+
+    <div class="q-block">
+      <div class="q-meta"><span class="q-n">46</span><span class="q-tag">Tagline</span></div>
+      <div class="q-label">¿El logotipo debería tener una tagline o frase secundaria debajo del nombre?</div>
+      <div class="chip-grid">
+        <input type="radio" class="chip-opt" name="tagline" id="tg1" value="Sí, en todas las versiones"><label for="tg1">Sí, en todas las versiones</label>
+        <input type="radio" class="chip-opt" name="tagline" id="tg2" value="Solo en versiones grandes"><label for="tg2">Solo en versiones grandes</label>
+        <input type="radio" class="chip-opt" name="tagline" id="tg3" value="No, sin tagline"><label for="tg3">No, sin tagline</label>
+      </div>
+      <input type="text" name="tagline_texto" style="margin-top:12px" placeholder="Si respondiste Sí, ¿qué frase debería llevar? (aunque no sea definitiva)">
+    </div>
+
+    <div class="q-block">
+      <div class="q-meta"><span class="q-n">47</span><span class="q-tag">Estilo tipográfico</span><span class="q-req">* requerido</span></div>
+      <div class="q-label">¿Qué estilo de letra debería tener el logotipo?</div>
+      <div class="chip-grid">
+        <input type="radio" class="chip-opt" name="estilo_tipo" id="et1" value="Sans serif bold — fuerza y modernidad"><label for="et1">Sans bold — fuerza y modernidad</label>
+        <input type="radio" class="chip-opt" name="estilo_tipo" id="et2" value="Sans serif light — limpieza y lujo"><label for="et2">Sans light — limpieza y lujo</label>
+        <input type="radio" class="chip-opt" name="estilo_tipo" id="et3" value="Serif — autoridad y tradición"><label for="et3">Serif — autoridad y tradición</label>
+        <input type="radio" class="chip-opt" name="estilo_tipo" id="et4" value="Serif itálica — elegancia suave"><label for="et4">Serif itálica — elegancia</label>
+        <input type="radio" class="chip-opt" name="estilo_tipo" id="et5" value="Monoespaciada — técnica y exactitud"><label for="et5">Monoespaciada — técnica</label>
+        <input type="radio" class="chip-opt" name="estilo_tipo" id="et6" value="Display condensada — impacto total"><label for="et6">Display condensada — impacto</label>
+      </div>
+    </div>
+
+    <div class="q-block">
+      <div class="q-meta"><span class="q-n">48</span><span class="q-tag">Tracking y personalidad</span><span class="q-req">* requerido</span></div>
+      <div class="q-label">¿Cómo debe sentirse el espaciado y la forma de las letras del nombre?</div>
+      <div id="scalesLogo">
+        <div class="scale-row"><span class="scale-left">Muy apretado — tensión</span><div class="scale-mid"><input type="range" min="1" max="10" value="5" name="esc_tracking" oninput="updScale(this,'sl1')"><div class="scale-val" id="sl1">5</div></div><span class="scale-right">Muy aireado — lujo</span></div>
+        <div class="scale-row"><span class="scale-left">Geométrica / construida</span><div class="scale-mid"><input type="range" min="1" max="10" value="5" name="esc_forma" oninput="updScale(this,'sl2')"><div class="scale-val" id="sl2">5</div></div><span class="scale-right">Humanista / orgánica</span></div>
+        <div class="scale-row"><span class="scale-left">Redonda / suave</span><div class="scale-mid"><input type="range" min="1" max="10" value="5" name="esc_contorno" oninput="updScale(this,'sl3')"><div class="scale-val" id="sl3">5</div></div><span class="scale-right">Angular / afilada</span></div>
+        <div class="scale-row"><span class="scale-left">Pesada / negra</span><div class="scale-mid"><input type="range" min="1" max="10" value="5" name="esc_peso" oninput="updScale(this,'sl4')"><div class="scale-val" id="sl4">5</div></div><span class="scale-right">Ligera / fina</span></div>
+      </div>
+    </div>
+
+    <div class="q-block">
+      <div class="q-meta"><span class="q-n">49</span><span class="q-tag">Personalización tipográfica</span><span class="q-req">* requerido</span></div>
+      <div class="q-label">¿Prefieren que la tipografía del logo sea una fuente existente o letras personalizadas?</div>
+      <div class="chip-grid">
+        <input type="radio" class="chip-opt" name="personalizacion" id="per1" value="Fuente existente bien elegida"><label for="per1">Fuente existente bien elegida</label>
+        <input type="radio" class="chip-opt" name="personalizacion" id="per2" value="Tipografía 100% personalizada"><label for="per2">100% personalizada</label>
+        <input type="radio" class="chip-opt" name="personalizacion" id="per3" value="Fuente modificada con ajustes propios"><label for="per3">Fuente modificada</label>
+        <input type="radio" class="chip-opt" name="personalizacion" id="per4" value="No lo sé aún"><label for="per4">No lo sé aún</label>
+      </div>
+    </div>
+  </div>
+
+  <div class="ch-divider"></div>
+
+  <!-- ══ CAP 09 ══ -->
+  <div class="ch-section" id="s9">
+    <div class="ch-header">
+      <div class="ch-num">09</div>
+      <div><h2>Símbolo, carácter gráfico y aplicaciones</h2><p>El ícono de la marca y las primeras piezas donde va a vivir.</p></div>
+    </div>
+
+    <div class="q-block">
+      <div class="q-meta"><span class="q-n">50</span><span class="q-tag">Tipo de símbolo</span></div>
+      <div class="q-label">Si el logo lleva un símbolo, ¿qué tipo de forma o concepto debería representar?</div>
+      <div class="chip-grid">
+        <input type="checkbox" class="chip-opt" name="tipo_simbolo" id="ts1" value="Elemento natural — hoja, planta"><label for="ts1">Elemento natural</label>
+        <input type="checkbox" class="chip-opt" name="tipo_simbolo" id="ts2" value="Agua / gota / fluido"><label for="ts2">Agua / gota / fluido</label>
+        <input type="checkbox" class="chip-opt" name="tipo_simbolo" id="ts3" value="Brillo / destello / luz"><label for="ts3">Brillo / destello</label>
+        <input type="checkbox" class="chip-opt" name="tipo_simbolo" id="ts4" value="Movimiento / ola / curva"><label for="ts4">Movimiento / ola</label>
+        <input type="checkbox" class="chip-opt" name="tipo_simbolo" id="ts5" value="Figura humana / silueta"><label for="ts5">Figura humana</label>
+        <input type="checkbox" class="chip-opt" name="tipo_simbolo" id="ts6" value="Abstracto / geométrico puro"><label for="ts6">Abstracto / geométrico</label>
+        <input type="checkbox" class="chip-opt" name="tipo_simbolo" id="ts7" value="Animal o criatura"><label for="ts7">Animal o criatura</label>
+        <input type="checkbox" class="chip-opt" name="tipo_simbolo" id="ts8" value="Ciclo / circularidad"><label for="ts8">Ciclo / circularidad</label>
+        <input type="checkbox" class="chip-opt" name="tipo_simbolo" id="ts9" value="Estrella / energía"><label for="ts9">Estrella / energía</label>
+        <input type="checkbox" class="chip-opt" name="tipo_simbolo" id="ts10" value="Flor / fruto / semilla"><label for="ts10">Flor / fruto</label>
+        <input type="checkbox" class="chip-opt" name="tipo_simbolo" id="ts11" value="Territorio / lugar local"><label for="ts11">Territorio local</label>
+        <input type="checkbox" class="chip-opt" name="tipo_simbolo" id="ts12" value="Forma del producto o servicio"><label for="ts12">Forma del producto</label>
+      </div>
+    </div>
+
+    <div class="q-block">
+      <div class="q-meta"><span class="q-n">51</span><span class="q-tag">Estilo del símbolo</span></div>
+      <div class="q-label">¿Cómo debe construirse visualmente el símbolo?</div>
+      <div class="chip-grid">
+        <input type="radio" class="chip-opt" name="estilo_simbolo" id="es1" value="Geométrico y construido"><label for="es1">Geométrico y construido</label>
+        <input type="radio" class="chip-opt" name="estilo_simbolo" id="es2" value="Orgánico / fluido / irregular"><label for="es2">Orgánico / fluido</label>
+        <input type="radio" class="chip-opt" name="estilo_simbolo" id="es3" value="Trazo de línea / sketch artesanal"><label for="es3">Trazo / sketch artesanal</label>
+        <input type="radio" class="chip-opt" name="estilo_simbolo" id="es4" value="Plano / flat / sin sombras"><label for="es4">Plano / flat</label>
+        <input type="radio" class="chip-opt" name="estilo_simbolo" id="es5" value="3D / con volumen y profundidad"><label for="es5">3D / con volumen</label>
+        <input type="radio" class="chip-opt" name="estilo_simbolo" id="es6" value="Ilustración detallada"><label for="es6">Ilustración detallada</label>
+        <input type="radio" class="chip-opt" name="estilo_simbolo" id="es7" value="Negativo / contraforma"><label for="es7">Negativo / contraforma</label>
+        <input type="radio" class="chip-opt" name="estilo_simbolo" id="es8" value="Módulo / patrón repetido"><label for="es8">Módulo / patrón</label>
+      </div>
+    </div>
+
+    <div class="q-block">
+      <div class="q-meta"><span class="q-n">52</span><span class="q-tag">Complejidad del símbolo</span></div>
+      <div class="q-label">¿Qué tan complejo o simple debe ser el símbolo?</div>
+      <div class="scale-row" style="max-width:100%">
+        <span class="scale-left">Muy simple — funciona a 10px</span>
+        <div class="scale-mid"><input type="range" min="1" max="10" value="5" name="esc_complejidad" oninput="updScale(this,'sc1')"><div class="scale-val" id="sc1">5</div></div>
+        <span class="scale-right">Muy detallado — rico en textura</span>
+      </div>
+    </div>
+
+    <div class="q-block">
+      <div class="q-meta"><span class="q-n">53</span><span class="q-tag">Lo que el símbolo nunca debe ser</span></div>
+      <div class="q-label">¿Hay algún tipo de símbolo que definitivamente NO quieren en la marca?</div>
+      <textarea name="anti_simbolo" placeholder="Ej: Nada de corazones genéricos. Sin formas que recuerden a marcas de la competencia…"></textarea>
+    </div>
+
+    <div class="q-block">
+      <div class="q-meta"><span class="q-n">54</span><span class="q-tag">Primeras aplicaciones</span><span class="q-req">* requerido</span></div>
+      <div class="q-label">¿Cuáles son las primeras piezas donde se usará el nuevo logotipo?</div>
+      <div class="chip-grid">
+        <input type="checkbox" class="chip-opt" name="aplicaciones" id="ap1" value="Etiqueta / empaque"><label for="ap1">Etiqueta / empaque</label>
+        <input type="checkbox" class="chip-opt" name="aplicaciones" id="ap2" value="Perfil Instagram"><label for="ap2">Instagram</label>
+        <input type="checkbox" class="chip-opt" name="aplicaciones" id="ap3" value="Perfil TikTok"><label for="ap3">TikTok</label>
+        <input type="checkbox" class="chip-opt" name="aplicaciones" id="ap4" value="WhatsApp / atención"><label for="ap4">WhatsApp</label>
+        <input type="checkbox" class="chip-opt" name="aplicaciones" id="ap5" value="Sitio web"><label for="ap5">Sitio web</label>
+        <input type="checkbox" class="chip-opt" name="aplicaciones" id="ap6" value="Tarjeta de presentación"><label for="ap6">Tarjeta de presentación</label>
+        <input type="checkbox" class="chip-opt" name="aplicaciones" id="ap7" value="Uniforme / camiseta"><label for="ap7">Uniforme / camiseta</label>
+        <input type="checkbox" class="chip-opt" name="aplicaciones" id="ap8" value="Material POP"><label for="ap8">Material POP</label>
+        <input type="checkbox" class="chip-opt" name="aplicaciones" id="ap9" value="Stickers / sellos"><label for="ap9">Stickers / sellos</label>
+        <input type="checkbox" class="chip-opt" name="aplicaciones" id="ap10" value="Bolsas de despacho"><label for="ap10">Bolsas de despacho</label>
+      </div>
+    </div>
+
+    <div class="q-block">
+      <div class="q-meta"><span class="q-n">55</span><span class="q-tag">Logos que admiran</span><span class="q-req">* requerido</span></div>
+      <div class="q-label">¿Hay logotipos de otras marcas que admiran por cómo están construidos?</div>
+      <div class="q-hint">De cualquier industria. Lo importante es entender qué les atrae de la construcción, no del sector.</div>
+      <textarea name="logos_gustan" placeholder="Logo 1: … — me gusta porque…&#10;Logo 2: … — me gusta porque…" required></textarea>
+    </div>
+
+    <div class="q-block">
+      <div class="q-meta"><span class="q-n">56</span><span class="q-tag">Logos que no quieren</span><span class="q-req">* requerido</span></div>
+      <div class="q-label">¿Hay logos o estilos que les generan rechazo y no quieren que se asocien?</div>
+      <textarea name="logos_no" placeholder="Ej: Sin el estilo genérico de logos de startup. Nada que parezca hecho con plantillas gratuitas…" required></textarea>
+    </div>
+
+    <div class="q-block">
+      <div class="q-meta"><span class="q-n">57</span><span class="q-tag">Éxito del proyecto</span><span class="q-req">* requerido</span></div>
+      <div class="q-label">Al ver el nuevo logotipo por primera vez, ¿qué tiene que hacerles sentir? ¿Cómo sabrán que quedó perfecto?</div>
+      <textarea name="exito" placeholder='"Que al verlo digan: ese somos nosotros exactamente." / "Que nuestra competencia lo vea y quiera algo así."…' required></textarea>
+    </div>
+  </div>
+
+  <!-- ══ ENVÍO ══ -->
+  <div class="submit-section">
+    <h3>¿Listo para enviar?</h3>
+    <p>Escribe el correo del diseñador y las respuestas llegarán directamente a su bandeja de entrada.</p>
+    <div class="email-row">
+      <input type="email" id="destEmail" placeholder="correo@diseñador.com">
+      <button type="button" class="btn-submit" onclick="submitForm()">Enviar brief →</button>
+    </div>
+    <p class="submit-note">Sin Google, sin scripts externos, sin cuentas. Tus respuestas se envían por tu cliente de correo.</p>
+  </div>
+
+  </form>
+
+  <div class="success-screen" id="successScreen">
+    <div class="success-icon">✓</div>
+    <h2>Brief enviado</h2>
+    <p>Las respuestas han sido enviadas al diseñador. El proceso creativo puede comenzar.</p>
+  </div>
+
+</div>
+
+<script>
+function updateProgress() {
+  const form = document.getElementById('mainForm');
+  const required = form.querySelectorAll('[required]');
+  let filled = 0;
+  required.forEach(el => {
+    if (el.value && el.value.trim()) filled++;
+  });
+  const pct = Math.round((filled / required.length) * 100);
+  document.getElementById('progFill').style.width = pct + '%';
+  document.getElementById('progPct').textContent = pct + '%';
+
+  // Mark nav buttons as done
+  const sections = ['s1','s2','s3','s4','s5','s6','s7','s8','s9'];
+  const btns = document.querySelectorAll('.ch-btn');
+  sections.forEach((id, i) => {
+    const sec = document.getElementById(id);
+    if (!sec) return;
+    const reqs = sec.querySelectorAll('[required]');
+    if (reqs.length === 0) return;
+    let allFilled = true;
+    reqs.forEach(el => { if (!el.value || !el.value.trim()) allFilled = false; });
+    if (allFilled) btns[i].classList.add('done');
+    else btns[i].classList.remove('done');
+  });
+}
+
+function updScale(input, id) {
+  document.getElementById(id).textContent = input.value;
+}
+
+function goTo(id) {
+  const el = document.getElementById(id);
+  if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function collectData() {
+  const form = document.getElementById('mainForm');
+  const data = {};
+  form.querySelectorAll('input[type="text"], input[type="email"], textarea').forEach(el => {
+    if (el.name && el.value.trim()) data[el.name] = el.value.trim();
+  });
+  form.querySelectorAll('input[type="radio"]:checked').forEach(el => {
+    data[el.name] = el.value;
+  });
+  const cbGroups = {};
+  form.querySelectorAll('input[type="checkbox"]:checked').forEach(el => {
+    if (!cbGroups[el.name]) cbGroups[el.name] = [];
+    cbGroups[el.name].push(el.value);
+  });
+  Object.assign(data, cbGroups);
+  form.querySelectorAll('input[type="range"]').forEach(el => {
+    if (el.name) data[el.name] = el.value;
+  });
+  return data;
+}
+
+function formatForEmail(data) {
+  const labels = {
+    proposito: '01 · Propósito',
+    origen: '02 · Origen',
+    vision: '03 · Visión',
+    mision: '04 · Misión',
+    industria: '05 · Industria',
+    diferencial: '06 · Diferencial',
+    expansion: '07 · Expansión',
+    vision_temporal: '07b · Visión temporal',
+    valores: '08 · Valores',
+    valores_desc: '08b · Descripción de valores',
+    etica: '09 · Principios éticos',
+    compromisos: '10 · Compromisos',
+    no_somos: '11 · Lo que nunca serán',
+    palabras: '12 · Palabras de marca',
+    palabras_extra: '12b · Otras palabras',
+    estilo: '13 · Estilo y enfoque',
+    tono: '14 · Tono de voz',
+    vocab_si: '15a · Vocabulario SÍ',
+    vocab_no: '15b · Vocabulario NUNCA',
+    historia: '16 · Historia central',
+    frase_marca: '17 · Frase de marca',
+    cliente: '18 · Cliente ideal',
+    estetica_cliente: '19 · Estética del cliente',
+    miedo_cliente: '20 · Miedo del cliente',
+    competencia: '21 · Competencia',
+    esc_simple: '22a · Simple ↔ Compleja',
+    esc_colorida: '22b · Colorida ↔ Gris',
+    esc_convencional: '22c · Convencional ↔ Rebelde',
+    esc_amigable: '22d · Amigable ↔ Premium',
+    esc_organica: '22e · Orgánica ↔ Digital',
+    esc_femenina: '22f · Femenina ↔ Masculina',
+    esc_divertida: '22g · Divertida ↔ Seria',
+    esc_local: '22h · Local ↔ Global',
+    esc_activa: '22i · Activa ↔ Calmada',
+    color_principal: '23 · Color principal',
+    color_principal_otro: '23b · Otro color principal',
+    color_acento: '24 · Color de acento',
+    color_acento_otro: '24b · Otro color de acento',
+    emocion_color: '25 · Emoción del color',
+    estilo_grafico: '26 · Estilo gráfico',
+    referentes: '27 · Referentes visuales',
+    anti_referentes: '28 · Anti-referentes visuales',
+    empaque: '29 · Formato del empaque',
+    variantes: '30 · Sistema de variantes',
+    variantes_desc: '30b · Variantes previstas',
+    cara_frontal: '31 · Cara frontal',
+    acabados: '32 · Acabados',
+    foto_redes: '33 · Fotografía en redes',
+    contenido: '34 · Contenido en redes',
+    cambio_nombre: '35 · Por qué cambiar el nombre',
+    comunica_nombre: '36 · Qué comunica el nombre',
+    tipo_nombre: '37 · Tipo de nombre',
+    idioma_nombre: '38 · Idioma del nombre',
+    esc_silabas: '39a · Longitud (sílabas)',
+    esc_sonido: '39b · Sonido',
+    esc_escritura: '39c · Escritura',
+    palabras_semilla: '40 · Palabras semilla',
+    nombres_gustan: '41 · Nombres admirados',
+    anti_nombre: '42 · Anti-referentes nombre',
+    tipo_logo: '43 · Tipo de logo',
+    versiones_logo: '44 · Versiones del logo',
+    caja: '45 · Caja tipográfica',
+    tagline: '46 · Tagline',
+    tagline_texto: '46b · Texto tagline',
+    estilo_tipo: '47 · Estilo tipográfico',
+    esc_tracking: '48a · Tracking',
+    esc_forma: '48b · Forma',
+    esc_contorno: '48c · Contorno',
+    esc_peso: '48d · Peso',
+    personalizacion: '49 · Personalización tipográfica',
+    tipo_simbolo: '50 · Tipo de símbolo',
+    estilo_simbolo: '51 · Estilo del símbolo',
+    esc_complejidad: '52 · Complejidad del símbolo',
+    anti_simbolo: '53 · Lo que el símbolo NO debe ser',
+    aplicaciones: '54 · Primeras aplicaciones',
+    logos_gustan: '55 · Logos admirados',
+    logos_no: '56 · Logos que no quieren',
+    exito: '57 · Éxito del proyecto',
+  };
+
+  let text = 'BRIEFING — IDENTIDAD DE MARCA\n';
+  text += '='.repeat(50) + '\n\n';
+  for (const [key, val] of Object.entries(data)) {
+    const label = labels[key] || key;
+    const value = Array.isArray(val) ? val.join(', ') : val;
+    text += label + '\n' + '-'.repeat(30) + '\n' + value + '\n\n';
+  }
+  return text;
+}
+
+function submitForm() {
+  const dest = document.getElementById('destEmail').value.trim();
+  if (!dest) { alert('Por favor escribe el correo del diseñador.'); return; }
+  const data = collectData();
+  const body = encodeURIComponent(formatForEmail(data));
+  const subject = encodeURIComponent('Briefing de Identidad de Marca');
+  window.location.href = 'mailto:' + dest + '?subject=' + subject + '&body=' + body;
+  setTimeout(() => {
+    document.getElementById('mainForm').style.display = 'none';
+    document.getElementById('successScreen').classList.add('show');
+  }, 1200);
+}
+
+document.getElementById('mainForm').addEventListener('input', updateProgress);
+document.getElementById('mainForm').addEventListener('change', updateProgress);
+updateProgress();
+</script>
+
+</body>
+</html>
